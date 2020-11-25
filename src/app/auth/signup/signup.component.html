@@ -1,0 +1,48 @@
+<!-- We Need to control the layout of our components with a package: FlexLayout package  -->
+<section >
+  <div class="alert alert-danger" *ngIf="error">
+    <p style="text-align: center;">  {{error}} </p>
+  </div><hr>
+<section class="signupform">
+  <form fxLayout="column"  fxLayoutAlign="center center"  fxLayoutGap="10px" (ngSubmit)="SubmitForm(f)" #f="ngForm" >
+   <mat-form-field >
+     <input
+     type="email"
+     matInput placeholder="Your email"
+     autocomplete="off"
+     name="email"
+     ngModel
+     #email="ngModel"
+     required
+     email
+     >
+     <mat-error *ngIf="email.hasError('required')"> This field must not be empty . </mat-error>
+     <mat-error *ngIf="!email.hasError('required')"> Email is not valid . </mat-error>
+   </mat-form-field>
+   <mat-form-field hintLabel="Should be at least 5 characters long.">
+     <input
+     type="password"
+     matInput placeholder="Your password"
+     autocomplete="off"
+     name="password"
+     ngModel
+     #pw="ngModel"
+     required
+     minlength="5">
+     <mat-hint *ngIf="pw.invalid" align="end"> {{pw.value?.length}} / 5 </mat-hint>
+     <mat-error> Has to be at least 5 characters long. </mat-error>
+   </mat-form-field>
+   <mat-form-field>
+     <input
+     matInput
+     placeholder="Your birthdate"
+     [matDatepicker]="picker"
+     [max]="maxDate" required name="birthday" ngModel>
+     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+     <mat-datepicker #picker></mat-datepicker>
+   </mat-form-field>
+   <mat-checkbox color="primary" ngModel name="agree" required> Agree to Terms and Conditions. </mat-checkbox>
+   <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" *ngIf="!(isloading$ | async)">Submit</button>
+   <mat-spinner *ngIf="isloading$ | async"></mat-spinner>
+  </form>
+</section>

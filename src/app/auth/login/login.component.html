@@ -1,0 +1,44 @@
+<section >
+  <div class="alert alert-danger" *ngIf="error" >
+    <p style="text-align: center;">  {{error}} </p>
+  </div><hr>
+
+  <form #f="ngForm" fxLayout="column"  fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="Login(f)">
+    <mat-form-field>
+      <input
+      type="email"
+       matInput
+        placeholder="Email"
+         ngModel
+         required
+         autocomplete="off"
+         name="email"
+         email
+         #email="ngModel"
+        [ngModel]="emailvalue">
+         <mat-error *ngIf="email.hasError('required')"> This field is required. </mat-error>
+         <mat-error *ngIf="!email.hasError('required')"> Email is invalid. </mat-error>
+
+   </mat-form-field>
+   <mat-form-field hintLabel="Should be at least 5 characters">
+      <input
+      type="password"
+       matInput
+        placeholder="Password"
+         ngModel
+         required
+         autocomplete="off"
+         name="password"
+         #pw="ngModel" minlength="5"
+         [ngModel]="pwvalue"
+         >
+         <mat-error *ngIf="pw.invalid">  Has to be at least 5 characters. </mat-error>
+
+   </mat-form-field>
+
+   <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid" *ngIf="!(isLoading$ | async)"> Login </button>
+   <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  </form>
+  </section>
+
+

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "electronics-project-fefdc": {
+      "hosting": {
+        "angular-course": [
+          "electronics-project-fefdc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-fitness-tracker-82530"
+  }
+}
