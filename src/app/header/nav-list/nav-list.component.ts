@@ -21,7 +21,6 @@ export class NavListComponent implements OnInit  {
   }
 
   onLogout(){
-   this.onClose();
    this.authService.logout();
   }
 }

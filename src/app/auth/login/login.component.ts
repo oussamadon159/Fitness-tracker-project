@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private authService:AuthService,
     private uiService:UIservice,
     private store:Store<fromRoot.State>) { }
-  emailvalue="oussama.don159@gmail.com";
+  emailvalue="oussama.elhaddad@gmail.com";
   pwvalue="skydrive147258";
   error:string;
   subsciption:Subscription;
