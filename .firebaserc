@@ -6,6 +6,13 @@
           "electronics-project-fefdc"
         ]
       }
+    },
+    "ng-fitness-tracker-82530": {
+      "hosting": {
+        "angular-course": [
+          "ng-fitness-tracker-82530"
+        ]
+      }
     }
   },
   "projects": {
